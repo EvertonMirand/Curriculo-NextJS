@@ -4,8 +4,10 @@ export const Container = styled.div`
   background: var(--background);
   display: flex;
 
+  flex-direction: column;
+
   line-height: 2rem;
-  justify-content: center;
+  align-items: center;
 
   ul,
   ol {
@@ -30,4 +32,17 @@ export const Container = styled.div`
       font-size: 1rem;
     }
   }
+`;
+
+export const Objective = styled.div.attrs({ className: 'objective' })`
+  h2 {
+    border-bottom: 1px solid var(--secondary-text);
+  }
+
+  h2,
+  span {
+    margin-bottom: 10px;
+  }
+
+  border-bottom: 1px solid var(--secondary-text);
 `;

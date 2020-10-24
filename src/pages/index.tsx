@@ -1,6 +1,6 @@
 import { Document } from 'prismic-javascript/types/documents';
 import Header from '../components/Header';
-import { Container } from '../styles/Home';
+import { Container, Objective } from '../styles/Home';
 import { fetcher } from '../services/PrismicService';
 import { GetStaticProps } from 'next';
 
@@ -16,6 +16,10 @@ const Home: React.FC<HomeProps> = ({ headers }) => {
   return (
     <Container>
       <Header data={headers} />
+      <Objective>
+        <h2>Objetivo</h2>
+        <span>Desenvolvimento de software, área especifica em mobile/web.</span>
+      </Objective>
     </Container>
   );
 };
