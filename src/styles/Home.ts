@@ -5,6 +5,7 @@ export const Container = styled.div`
   display: flex;
 
   line-height: 2rem;
+  justify-content: center;
 
   ul,
   ol {
@@ -12,8 +13,6 @@ export const Container = styled.div`
   }
 
   > div {
-    flex-direction: column;
-
     align-items: center;
     color: var(--secondary-text);
 
@@ -29,17 +28,6 @@ export const Container = styled.div`
     strong,
     a {
       font-size: 1rem;
-    }
-
-    p,
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    > li {
-      margin: 1rem;
     }
   }
 `;

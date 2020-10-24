@@ -2,16 +2,18 @@ import { Document } from 'prismic-javascript/types/documents';
 import ReactHtmlParser from 'react-html-parser';
 
 import { readHTML } from '../../utils/PrismicUtils';
-import { Container } from './styles';
+import { Container, Data } from './styles';
 
 interface HeaderProps {
-  data: Document;
+  data: Document[];
 }
 
-const Header: React.FC<HeaderProps> = ({ data: { data } }) => {
+const Header: React.FC<HeaderProps> = ({ data }) => {
   return (
     <Container>
-      <div>{ReactHtmlParser(readHTML(data.content))}</div>
+      {data.map(({ data: header }, index) => (
+        <Data key={index}>{ReactHtmlParser(readHTML(header.content))}</Data>
+      ))}
     </Container>
   );
 };

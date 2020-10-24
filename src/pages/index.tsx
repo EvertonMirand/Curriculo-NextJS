@@ -5,29 +5,29 @@ import { fetcher } from '../services/PrismicService';
 import { GetStaticProps } from 'next';
 
 interface HomeProps {
-  header?: Document;
+  headers?: Document[];
 }
 
-const Home: React.FC<HomeProps> = ({ header }) => {
-  if (!header) {
+const Home: React.FC<HomeProps> = ({ headers }) => {
+  console.warn(headers);
+  if (!headers) {
     return <div>Carregando...</div>;
   }
   return (
     <Container>
-      <Header data={header} />
+      <Header data={headers} />
     </Container>
   );
 };
 
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   const headers = await fetcher('header');
-
-  console.warn(headers[0].data);
-
+  console.warn(headers);
   return {
     props: {
-      header: headers[0],
+      headers,
     },
+    revalidate: 2,
   };
 };
 
