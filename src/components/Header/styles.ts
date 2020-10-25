@@ -7,7 +7,6 @@ export const Container = styled.div`
   background: var(--primary-color);
   color: var(--primary-text) !important;
   justify-content: space-around;
-  max-width: 1000px;
 `;
 
 export const Data = styled.div.attrs({ className: 'data' })`
