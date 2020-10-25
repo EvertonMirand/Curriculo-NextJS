@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@types/styled-components": "^5.1.4",
+    "date-fns": "^2.16.1",
     "next": "9.5.5",
     "prismic-dom": "^2.2.4",
     "prismic-javascript": "^3.0.2",
