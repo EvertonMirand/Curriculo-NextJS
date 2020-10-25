@@ -31,6 +31,8 @@ export const Container = styled.div`
     a {
       font-size: 1rem;
     }
+
+    max-width: 1000px;
   }
 `;
 
