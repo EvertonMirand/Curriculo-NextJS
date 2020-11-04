@@ -2,12 +2,15 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   background: var(--background);
-  display: flex;
 
   flex-direction: column;
 
   line-height: 2rem;
   align-items: center;
+  place-items: center;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
 
   ul,
   ol {
@@ -31,8 +34,6 @@ export const Container = styled.div`
     a {
       font-size: 1rem;
     }
-
-    max-width: 1000px;
   }
 `;
 
