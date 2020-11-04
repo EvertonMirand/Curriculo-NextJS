@@ -1,5 +1,6 @@
-import { parseStringToDateFormat } from '@/utils/DateUtils';
 import { renderHTMLText } from '@/utils/HTMLUtils';
+import { readText } from '@/utils/PrismicUtils';
+import { parseISO, compareDesc } from 'date-fns';
 
 import { Document } from 'prismic-javascript/types/documents';
 import Header from './Header';
@@ -14,10 +15,14 @@ interface ProfessionalExperienceProps {
 const ProfessionalExperience: React.FC<ProfessionalExperienceProps> = ({
   experiences,
 }) => {
+  const sortedExperiences = experiences.sort(
+    ({ data: { datebegin: a } }, { data: { datebegin: b } }) =>
+      compareDesc(parseISO(a), parseISO(b)),
+  );
   return (
     <Container>
       <h1>Experiência Profissional</h1>
-      {experiences.map(
+      {sortedExperiences.map(
         ({
           data: {
             achievements,
@@ -36,10 +41,12 @@ const ProfessionalExperience: React.FC<ProfessionalExperienceProps> = ({
               <h3>Responsabilidades</h3>
               {renderHTMLText(responsibilities)}
             </div>
-            <div>
-              <h3>Principais Realizações</h3>
-              {renderHTMLText(achievements)}
-            </div>
+            {readText(achievements) ? (
+              <div>
+                <h3>Principais Realizações</h3>
+                {renderHTMLText(achievements)}
+              </div>
+            ) : null}
           </div>
         ),
       )}
