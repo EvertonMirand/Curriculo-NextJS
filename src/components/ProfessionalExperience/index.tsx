@@ -1,5 +1,3 @@
-import { renderHTMLText } from '@/utils/HTMLUtils';
-import { readText } from '@/utils/PrismicUtils';
 import { parseISO, compareDesc } from 'date-fns';
 
 import { Document } from 'prismic-javascript/types/documents';
@@ -7,6 +5,7 @@ import Header from './Header';
 import Period from './Period';
 
 import { Container } from './styles';
+import TextContent from './TextContent';
 
 interface ProfessionalExperienceProps {
   experiences: Document[];
@@ -37,16 +36,8 @@ const ProfessionalExperience: React.FC<ProfessionalExperienceProps> = ({
           <div key={id}>
             <Header company={company} role={role} />
             <Period datebegin={datebegin} dateend={dateend} />
-            <div>
-              <h3>Responsabilidades</h3>
-              {renderHTMLText(responsibilities)}
-            </div>
-            {readText(achievements) ? (
-              <div>
-                <h3>Principais Realizações</h3>
-                {renderHTMLText(achievements)}
-              </div>
-            ) : null}
+            <TextContent title="Responsabilidades" data={responsibilities} />
+            <TextContent title="Principais Realizações" data={achievements} />
           </div>
         ),
       )}
