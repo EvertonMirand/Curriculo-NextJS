@@ -1,10 +1,9 @@
+import { parseStringToDateFormat } from '@/utils/DateUtils';
 import { renderHTMLText } from '@/utils/HTMLUtils';
 
-import { format, parseISO } from 'date-fns';
-
-import { ptBR } from 'date-fns/locale';
-
 import { Document } from 'prismic-javascript/types/documents';
+import Header from './Header';
+import Period from './Period';
 
 import { Container } from './styles';
 
@@ -15,7 +14,6 @@ interface ProfessionalExperienceProps {
 const ProfessionalExperience: React.FC<ProfessionalExperienceProps> = ({
   experiences,
 }) => {
-  console.warn(experiences);
   return (
     <Container>
       <h1>Experiência Profissional</h1>
@@ -32,26 +30,14 @@ const ProfessionalExperience: React.FC<ProfessionalExperienceProps> = ({
           id,
         }) => (
           <div key={id}>
+            <Header company={company} role={role} />
+            <Period datebegin={datebegin} dateend={dateend} />
             <div>
-              {renderHTMLText(role)}
-              {renderHTMLText(company)}
-            </div>
-            <div>
-              <span>
-                {format(parseISO(datebegin), 'MMM yyyy', { locale: ptBR })}
-              </span>
-              <span>
-                {dateend
-                  ? format(parseISO(dateend), 'MMM', { locale: ptBR })
-                  : 'Atual'}
-              </span>
-            </div>
-            <div>
-              <span>Responsabilidades</span>
+              <h3>Responsabilidades</h3>
               {renderHTMLText(responsibilities)}
             </div>
             <div>
-              <span>Principais Realizações</span>
+              <h3>Principais Realizações</h3>
               {renderHTMLText(achievements)}
             </div>
           </div>
